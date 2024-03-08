@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:22:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/08 12:03:55 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:38:15 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 // faire attention avec mutex de pas deverrouiller par un autre thread que 
 // celui qui l'a verouiller
 // pour destroy un mutex il faut que celui soit de base deverrouiller
-
-// construire les structures
 
 // initialiser
 
@@ -38,5 +36,4 @@ int	main(int argc, char **argv)
 	}
 	else
 		return (FAIL);
-	
 }

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/08 12:10:42 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:55:36 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	t_philo	*philo;
+	t_philo	philo;
 	int		dead_flag;
 	int		nb_philo;
 	int		time_to_die;
