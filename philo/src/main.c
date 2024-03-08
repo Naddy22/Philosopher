@@ -6,21 +6,15 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:22:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/07 15:55:20 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:03:55 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../inc/philo.h"
 
 // faire attention avec mutex de pas deverrouiller par un autre thread que 
 // celui qui l'a verouiller
 // pour destroy un mutex il faut que celui soit de base deverrouiller
-
-// parsing validation: 
-// 1 verifier si pas plus de 5 arguments (5eme optionnel)
-// (si 4 j'envoie comme si mon 5eme arg etait à 0)
-// 2 verifier si c'est bien que des nombres > 0 sauf nb de repas et pas + 
-// que 200 philo
 
 // construire les structures
 
@@ -33,3 +27,16 @@
 // les fourchettes, imprimer le msg "x mange" et mange pdt la durée donné 
 // en argument (usleep) et apres il deverouille fourchette.
 
+int	main(int argc, char **argv)
+{
+	t_data data;
+
+	memset(&data, 0, sizeof(t_data));
+	if (parsing(&data, argv, argc) == SUCCESS)
+	{
+		
+	}
+	else
+		return (FAIL);
+	
+}
