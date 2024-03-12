@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:22:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/08 14:38:15 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:24:51 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 int	main(int argc, char **argv)
 {
 	t_data data;
+	t_philo *philos;
 
 	memset(&data, 0, sizeof(t_data));
 	if (parsing(&data, argv, argc) == SUCCESS)
