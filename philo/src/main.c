@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:22:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/12 14:24:51 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:11:40 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 // faire attention avec mutex de pas deverrouiller par un autre thread que 
 // celui qui l'a verouiller
 // pour destroy un mutex il faut que celui soit de base deverrouiller
-
-// initialiser
 
 // creation de la routine en creeant un observateur en plus qui gerera tout
 // (une boucle qui s'arrete quand un philo meurt)
@@ -29,12 +27,22 @@ int	main(int argc, char **argv)
 {
 	t_data data;
 	t_philo *philos;
+	int i;
 
 	memset(&data, 0, sizeof(t_data));
 	if (parsing(&data, argv, argc) == SUCCESS)
 	{
-		
+		init(&data);
+		i = 0;
+		while (i < data.nb_philo)
+		{
+			if (pthread_join(data.philo[i].thread, NULL) != 0)
+				break;
+			i++;
+		}
+		ft_exit(&data);
 	}
 	else
 		return (FAIL);
+	return (SUCCESS);
 }
