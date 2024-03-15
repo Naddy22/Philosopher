@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 11:22:08 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:11:40 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:42:31 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 int	main(int argc, char **argv)
 {
 	t_data data;
-	t_philo *philos;
 	int i;
 
 	memset(&data, 0, sizeof(t_data));
 	if (parsing(&data, argv, argc) == SUCCESS)
 	{
-		init(&data);
+		if(init(&data) == FAIL)
+			return(FAIL);
 		i = 0;
 		while (i < data.nb_philo)
 		{

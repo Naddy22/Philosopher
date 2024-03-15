@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:34:45 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:04:49 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:44:45 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,22 @@ static int	init_philo(t_data *data)
 	return (SUCCESS);
 }
 
-void	init(t_data *data)
+int	init(t_data *data)
 {
 	pthread_mutex_init(&data->print_mutex, NULL);
 	pthread_mutex_init(&data->death_mutex, NULL);
 	pthread_mutex_init(&data->fork_mutex, NULL);
 	data->philo = malloc(data->nb_philo * sizeof(t_philo));
 	if (data->philo == NULL)
+	{
 		error_msg("Malloc failed");
+		return (FAIL);
+	}
 	if (init_philo(data) == FAIL)
 	{
-		error_msg("Init philo failed");
 		ft_exit(data);
+		error_msg("Init philo failed");
+		return (FAIL);
 	}
+	return (SUCCESS);
 }

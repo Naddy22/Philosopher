@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:05:16 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:48:41 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	parsing(t_data *data, char **argv, int argc);
 void	error_msg(char *error);
 void	ft_exit(t_data *data);
 
-void	init(t_data *data);
+int	init(t_data *data);
+
+void *actions(void *struc);
 
 //utils
 int	ft_atoi(const char *str);

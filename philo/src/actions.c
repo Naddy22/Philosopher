@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 11:07:07 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:39:10 by namoisan         ###   ########.fr       */
+/*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
+/*   Updated: 2024/03/15 15:48:28 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	error_msg(char *error)
+void *actions(void *struc)
 {
-	printf("Error : %s\n", error);
-	return (FAIL);
-}
+	t_philo *philo;
 
-void	ft_exit(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->nb_philo)
-		pthread_mutex_destroy(&data->philo[i].l_fork.fork);
-	if (data->philo)
-		free(data->philo);
-	pthread_mutex_destroy(&data->death_mutex);
-	pthread_mutex_destroy(&data->fork_mutex);
-	pthread_mutex_destroy(&data->print_mutex);
+	philo = (t_philo *)struc;
 }
