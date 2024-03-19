@@ -6,11 +6,21 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/12 10:37:19 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:16:11 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+long long int	get_time(void)
+{
+	static struct timeval start = {-1, -1};
+	struct timeval now;
+	long long int result;
+
+	result = 0;
+	
+}
 
 static int	ft_atoi_part(const char *str)
 {

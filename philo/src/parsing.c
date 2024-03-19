@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:02:38 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/08 12:25:41 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 10:28:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // parsing validation: 
 // 1 verifier si pas plus de 5 arguments (5eme optionnel)
-// (si 4 j'envoie comme si mon 5eme arg etait à 0)
+// (si 4 j'envoie comme si mon 5eme arg etait à -1)
 // 2 verifier si c'est bien que des nombres > 0 sauf nb de repas et pas + 
 // que 200 philo
 
