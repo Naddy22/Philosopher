@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 11:24:44 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:09:59 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void *actions(void *struc);
 
 //utils
 int	ft_atoi(const char *str);
+long long int	get_time(void);
 
 #endif

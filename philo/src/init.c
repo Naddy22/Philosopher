@@ -6,11 +6,26 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:34:45 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:44:45 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:11:06 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+static int	create_philo(t_data *data)
+{
+	int i;
+	
+	i = -1;
+	while (++i < data->nb_philo)
+	{
+		data->philo[i].last_eat = get_time();
+		if(pthread_create(&data->philo[i].thread, NULL, &actions, \
+		&data->philo[i]) != 0)
+			return (FAIL);
+	}
+	return (SUCCESS);
+}
 
 static int	init_philo(t_data *data)
 {
@@ -21,6 +36,7 @@ static int	init_philo(t_data *data)
 	{
 		data->philo[i].id = i + 1;
 		data->philo[i].died = 0;
+		data->start_time = get_time();
 		data->philo[i].r_fork = NULL;
 		data->philo[i].l_fork.is_lock = 0;
 		data->philo[i].data = data;
@@ -31,13 +47,8 @@ static int	init_philo(t_data *data)
 		else
 			data->philo[i].r_fork = &data->philo[i + 1].l_fork;
 	}
-	i = -1;
-	while (++i < data->nb_philo)
-	{
-		if(pthread_create(&data->philo[i].thread, NULL, &actions, \
-		&data->philo[i]) != 0)
-			return (FAIL);
-	}
+	if (create_philo(data) == FAIL)
+		return (FAIL);
 	return (SUCCESS);
 }
 

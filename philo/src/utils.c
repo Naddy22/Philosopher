@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 12:56:05 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 13:45:14 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ long long int	get_time(void)
 	result = result + (now.tv_usec - start.tv_usec) / 1000;
 	return (result);
 }
+
+
 
 static int	ft_atoi_part(const char *str)
 {

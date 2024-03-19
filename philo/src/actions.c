@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 11:20:22 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:09:40 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,18 @@
 // les fourchettes, imprimer le msg "x mange" et mange pdt la durée donné 
 // en argument (usleep) et apres il deverouille fourchette.
 
+// mettre valeur dans last_eat
+// usleep 1 philo sur 2 pour pas les faire demarrer en même temps 
+// tant que mes philo sont en vie :
+// think, si pas mort -> eat, si nombre de repas max atteint on return null pour
+// finir le thread actuel, si pas mort -> sleep et voir pour remettre un usleep
+// dans la boucle
+
 void *actions(void *struc)
 {
 	t_philo *philo;
 
 	philo = (t_philo *)struc;
+	if (philo->id % 2 == 0)
+		usleep(philo->data->time_to_eat);
 }
