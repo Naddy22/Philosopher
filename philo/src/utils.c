@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 12:16:11 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:56:05 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ long long int	get_time(void)
 	long long int result;
 
 	result = 0;
-	
+	if (start.tv_sec == -1 && start.tv_usec == -1)
+		gettimeofday(&start, NULL);
+	gettimeofday(&now, NULL);
+	result = (now.tv_sec - start.tv_sec) * 1000;
+	result = result + (now.tv_usec - start.tv_usec) / 1000;
+	return (result);
 }
 
 static int	ft_atoi_part(const char *str)
