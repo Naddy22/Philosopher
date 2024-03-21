@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 15:57:54 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:28:14 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,9 @@ void	*actions(void *struc)
 	philo = (t_philo *)struc;
 	if (philo->id % 2 == 0)
 		usleep(philo->data->time_to_eat);
+	while(ph_is_alive())
+	{
+		thinking();
+		
+	}
 }

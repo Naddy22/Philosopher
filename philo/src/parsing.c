@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:02:38 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 10:28:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:28:29 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_valid_number(char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (argv[i][j] < '0' && argv[i][j] > '9')
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (FALSE);
 			j++;
 		}
@@ -45,7 +45,7 @@ int	parsing(t_data *data, char **argv, int argc)
 		if (is_valid_number(argv) == TRUE)
 		{
 			if (ft_atoi(argv[1]) < 1 && ft_atoi(argv[1]) > 200)
-				error_msg("Number of philosophers must be between 1 and 200");
+				return (error_msg("Number of philosophers must be between 1 and 200"));
 			data->nb_philo = ft_atoi(argv[1]);
 			data->time_to_die = ft_atoi(argv[2]);
 			data->time_to_eat = ft_atoi(argv[3]);
@@ -56,9 +56,9 @@ int	parsing(t_data *data, char **argv, int argc)
 				data->nb_must_eat = -1;
 		}
 		else
-			error_msg("Arguments must only be digit (>= 0)");
+			return (error_msg("Arguments must be an integer (>= 0)"));
 	}
 	else
-		error_msg("Invalid number of arguments");
+		return (error_msg("Invalid number of arguments"));
 	return (SUCCESS);
 }

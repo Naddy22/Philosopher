@@ -6,13 +6,13 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:07:07 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/15 15:39:10 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:23:10 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	error_msg(char *error)
+int	error_msg(char *error)
 {
 	printf("Error : %s\n", error);
 	return (FAIL);

@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:34:45 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 15:11:06 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:26:36 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	create_philo(t_data *data)
 	i = -1;
 	while (++i < data->nb_philo)
 	{
-		data->philo[i].last_eat = get_time();
+		data->philo[i].last_eat = get_time() + data->time_to_die;
 		if(pthread_create(&data->philo[i].thread, NULL, &actions, \
 		&data->philo[i]) != 0)
 			return (FAIL);

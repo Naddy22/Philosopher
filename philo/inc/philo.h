@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 15:09:59 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 10:25:24 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	t_fork			*r_fork;
 	t_fork			l_fork;
-	t_data			*data;
+	struct s_data	*data;
 }					t_philo;
 
 typedef struct s_data
@@ -60,7 +60,7 @@ typedef struct s_data
 
 int	parsing(t_data *data, char **argv, int argc);
 
-void	error_msg(char *error);
+int		error_msg(char *error);
 void	ft_exit(t_data *data);
 
 int	init(t_data *data);
