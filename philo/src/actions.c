@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 15:38:04 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:30:17 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ void	thinking(t_philo *philo)
 	print_action(philo, THINK);
 }
 
+//stocker dans une variable ton temps de sleep + get time afin de savoir quand
+//sortir de la boucle. Verifier si ton need_eat(lasteat) n'est pas encore arriver
+//sinon mort. Fonctionnement pas mal pareil pour eat
 void	sleeping(t_philo *philo)
 {
 	print_action(philo, SLEEP);
