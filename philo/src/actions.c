@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 11:28:14 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:38:04 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,28 @@
 // think, si pas mort -> eat, si nombre de repas max atteint on return null pour
 // finir le thread actuel, si pas mort -> sleep et voir pour remettre un usleep
 // dans la boucle
+int	ph_is_alive(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->death_mutex);
+	if(philo->data->dead_flag == 1)
+	{
+		pthread_mutex_unlock(&philo->data->death_mutex);
+		return (FALSE);
+	}
+	pthread_mutex_unlock(&philo->data->death_mutex);
+	return (TRUE);
+}
+
+void	thinking(t_philo *philo)
+{
+	print_action(philo, THINK);
+}
+
+void	sleeping(t_philo *philo)
+{
+	print_action(philo, SLEEP);
+	
+}
 
 void	*actions(void *struc)
 {
@@ -36,9 +58,11 @@ void	*actions(void *struc)
 	philo = (t_philo *)struc;
 	if (philo->id % 2 == 0)
 		usleep(philo->data->time_to_eat);
-	while(ph_is_alive())
+	while(ph_is_alive(philo) == TRUE)
 	{
-		thinking();
-		
+		thinking(philo);
+		eating();
+		sleeping(philo);
 	}
+	return (NULL);
 }

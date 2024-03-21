@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 10:25:24 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:35:40 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # define FALSE 0
 # define SUCCESS 0
 # define FAIL 1
+
+# define THINK "is thinking"
+# define TOOK_FORK "has taken a fork"
+# define L_FORK "has taken left fork"
+# define R_FORK "has taken right fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define DIED "died"
 
 typedef struct s_fork
 {
@@ -65,10 +73,12 @@ void	ft_exit(t_data *data);
 
 int	init(t_data *data);
 
-void *actions(void *struc);
+void	*actions(void *struc);
+int		ph_is_alive(t_philo *philo);
 
 //utils
-int	ft_atoi(const char *str);
+int				ft_atoi(const char *str);
 long long int	get_time(void);
+void			print_action(t_philo *philo, const char *msg);
 
 #endif

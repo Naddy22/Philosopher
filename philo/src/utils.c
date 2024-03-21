@@ -6,11 +6,19 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/19 13:45:14 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:36:00 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+void	print_action(t_philo *philo, const char *msg)
+{
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (ph_is_alive(philo) == TRUE)
+		printf("%lld %d %s\n", get_time(), philo->id, msg);
+	pthread_mutex_unlock(&philo->data->print_mutex);
+}
 
 long long int	get_time(void)
 {
