@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/27 11:53:56 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/27 15:32:34 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	eating(t_philo *philo)
 int	thinking(t_philo *philo)
 {
 	print_action(philo, THINK);
+	
 }
 
 //stocker dans une variable ton temps de sleep + get time afin de savoir quand

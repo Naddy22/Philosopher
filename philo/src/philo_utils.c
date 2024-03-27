@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:19:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/27 10:21:24 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:01:35 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ int	ph_is_alive(t_philo *philo)
 	}
 	pthread_mutex_unlock(&philo->data->death_mutex);
 	return (TRUE);
+}
+
+int fork_is_lock(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->fork_mutex);
+	if (&philo->l_fork.fork == &philo->r_fork->fork)
+		return (FALSE);
+	else if (philo->l_fork.is_lock == 0 && philo->r_fork->is_lock == 0)
+	{
+		philo->l_fork.is_lock = 1;
+		philo->r_fork->is_lock = 1;
+		return (TRUE);
+	}
 }
 
 int	print_action(t_philo *philo, const char *msg)
