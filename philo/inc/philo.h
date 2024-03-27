@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 15:35:40 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:22:00 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_philo
 	int				id;
 	int				died;
 	int				eat_count;
-	long long int	last_eat;
+	long long int	need_eat;
 	pthread_t		thread;
 	t_fork			*r_fork;
 	t_fork			l_fork;
@@ -76,9 +76,13 @@ int	init(t_data *data);
 void	*actions(void *struc);
 int		ph_is_alive(t_philo *philo);
 
-//utils
+//init_utils
 int				ft_atoi(const char *str);
 long long int	get_time(void);
-void			print_action(t_philo *philo, const char *msg);
+
+//philo_utils
+int		print_action(t_philo *philo, const char *msg);
+void	kill_philo(t_philo *philo);
+int		ph_is_alive(t_philo *philo);
 
 #endif

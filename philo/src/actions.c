@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 16:30:17 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/27 11:53:56 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,14 @@
 // think, si pas mort -> eat, si nombre de repas max atteint on return null pour
 // finir le thread actuel, si pas mort -> sleep et voir pour remettre un usleep
 // dans la boucle
-int	ph_is_alive(t_philo *philo)
+
+int	eating(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->death_mutex);
-	if(philo->data->dead_flag == 1)
-	{
-		pthread_mutex_unlock(&philo->data->death_mutex);
-		return (FALSE);
-	}
-	pthread_mutex_unlock(&philo->data->death_mutex);
-	return (TRUE);
+	
 }
 
-void	thinking(t_philo *philo)
+
+int	thinking(t_philo *philo)
 {
 	print_action(philo, THINK);
 }
@@ -48,10 +43,23 @@ void	thinking(t_philo *philo)
 //stocker dans une variable ton temps de sleep + get time afin de savoir quand
 //sortir de la boucle. Verifier si ton need_eat(lasteat) n'est pas encore arriver
 //sinon mort. Fonctionnement pas mal pareil pour eat
-void	sleeping(t_philo *philo)
+int	sleeping(t_philo *philo)
 {
-	print_action(philo, SLEEP);
+	long long int	sleep_t;
 	
+	sleep_t = philo->data->time_to_sleep + get_time();
+	if (print_action(philo, SLEEP) != SUCCESS)
+		return (FAIL);
+	while (get_time() < sleep_t)
+	{
+		if (philo->need_eat < get_time())
+		{
+			kill_philo(philo);
+			return (FAIL);
+		}
+		usleep(philo->data->time_to_eat);
+	}
+	return (SUCCESS);
 }
 
 void	*actions(void *struc)
@@ -63,9 +71,12 @@ void	*actions(void *struc)
 		usleep(philo->data->time_to_eat);
 	while(ph_is_alive(philo) == TRUE)
 	{
-		thinking(philo);
-		eating();
-		sleeping(philo);
+		if (thinking(philo) != SUCCESS)
+			break;
+		if (eating(philo) != SUCCESS)
+			break;
+		if (sleeping(philo) != SUCCESS)
+			break;
 	}
 	return (NULL);
 }

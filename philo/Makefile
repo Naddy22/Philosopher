@@ -6,7 +6,7 @@ DEPS = ./inc/philo.h
 MK = mkdir -p
 RM = rm -rf
 BIN = bin
-SRC = main.c parsing.c error_free.c utils.c init.c actions.c
+SRC = main.c parsing.c error_free.c init_utils.c init.c actions.c philo_utils.c
 SDIR = ./src/
 
 # -- COLORS -- #

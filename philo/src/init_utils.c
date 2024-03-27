@@ -6,19 +6,11 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 14:36:00 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/27 10:20:26 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-void	print_action(t_philo *philo, const char *msg)
-{
-	pthread_mutex_lock(&philo->data->print_mutex);
-	if (ph_is_alive(philo) == TRUE)
-		printf("%lld %d %s\n", get_time(), philo->id, msg);
-	pthread_mutex_unlock(&philo->data->print_mutex);
-}
 
 long long int	get_time(void)
 {
@@ -34,8 +26,6 @@ long long int	get_time(void)
 	result = result + (now.tv_usec - start.tv_usec) / 1000;
 	return (result);
 }
-
-
 
 static int	ft_atoi_part(const char *str)
 {
