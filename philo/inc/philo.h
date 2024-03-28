@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/27 10:22:00 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/28 09:19:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ long long int	get_time(void);
 int		print_action(t_philo *philo, const char *msg);
 void	kill_philo(t_philo *philo);
 int		ph_is_alive(t_philo *philo);
+int		fork_is_lock(t_philo *philo);
 
 #endif
