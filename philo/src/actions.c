@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/28 10:05:39 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:45:57 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	eating(t_philo *philo)
 	philo->need_eat = get_time() + philo->data->time_to_die;
 	while (get_time() < eat_t)
 	{
-		if (philo->need_eat < get_time())
+		if (philo->need_eat <= get_time())
 		{
 			kill_philo(philo);
 			return (FAIL);
@@ -57,7 +57,7 @@ int	thinking(t_philo *philo)
 	usleep(100);
 	while (fork_is_lock(philo) == FALSE)
 	{
-		if (philo->need_eat < get_time())
+		if (philo->need_eat <= get_time())
 		{
 			kill_philo(philo);
 			return (FAIL);
@@ -85,7 +85,7 @@ int	sleeping(t_philo *philo)
 		return (FAIL);
 	while (get_time() < sleep_t)
 	{
-		if (philo->need_eat < get_time())
+		if (philo->need_eat <= get_time())
 		{
 			kill_philo(philo);
 			return (FAIL);

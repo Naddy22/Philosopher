@@ -1,6 +1,6 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -pthread -g #-fsanitize=thread #-fsanitize=adress
+CFLAGS = -Wall -Wextra -Werror -pthread -g -fsanitize=thread #-fsanitize=adress
 
 DEPS = ./inc/philo.h
 MK = mkdir -p
