@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/28 15:45:57 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/29 10:31:59 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	eating(t_philo *philo)
 			kill_philo(philo);
 			return (FAIL);
 		}
-		usleep(100);
+		// usleep(100);
 	}
 	pthread_mutex_unlock(&philo->r_fork->fork);
 	pthread_mutex_unlock(&philo->l_fork.fork);
@@ -62,7 +62,7 @@ int	thinking(t_philo *philo)
 			kill_philo(philo);
 			return (FAIL);
 		}
-		usleep(100);
+		// usleep(100);
 	}
 	pthread_mutex_lock(&philo->r_fork->fork);
 	if (print_action(philo, R_FORK) != SUCCESS)
@@ -90,7 +90,7 @@ int	sleeping(t_philo *philo)
 			kill_philo(philo);
 			return (FAIL);
 		}
-		usleep(100);
+		// usleep(100);
 	}
 	return (SUCCESS);
 }
