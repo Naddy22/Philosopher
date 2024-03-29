@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/28 09:19:37 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/03/29 13:19:26 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 
 # define THINK "is thinking"
 # define TOOK_FORK "has taken a fork"
-# define L_FORK "has taken left fork"
-# define R_FORK "has taken right fork"
 # define EAT "is eating"
 # define SLEEP "is sleeping"
 # define DIED "died"
