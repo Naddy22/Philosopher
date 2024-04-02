@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/29 16:17:42 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/02 11:52:51 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	eating(t_philo *philo)
 
 	eat_t = get_time() + philo->data->time_to_eat;
 	print_action(philo, EAT);
+	philo->need_eat = get_time() + philo->data->time_to_die;
 	while (get_time() < eat_t)
 	{
 		if (philo->need_eat <= get_time())
@@ -39,7 +40,6 @@ int	eating(t_philo *philo)
 		}
 		usleep(1000);
 	}
-	philo->need_eat = get_time() + philo->data->time_to_die;
 	pthread_mutex_unlock(&philo->r_fork->fork);
 	pthread_mutex_unlock(&philo->l_fork.fork);
 	pthread_mutex_lock(&philo->data->fork_mutex);
@@ -54,7 +54,10 @@ int	eating(t_philo *philo)
 int	thinking(t_philo *philo)
 {
 	print_action(philo, THINK);
-	// usleep(1000);
+	if (philo->data->nb_philo % 2 == 0)
+		usleep(1000);
+	else
+		usleep(philo->data->time_to_eat * 1000 / 2);
 	if (&philo->l_fork.fork == &philo->r_fork->fork)
 		print_action(philo, TOOK_FORK);
 	while (fork_is_lock(philo) == FALSE)
@@ -64,7 +67,7 @@ int	thinking(t_philo *philo)
 			kill_philo(philo);
 			return (FAIL);
 		}
-		usleep(1000);
+		usleep(100);
 	}
 	pthread_mutex_lock(&philo->r_fork->fork);
 	if (print_action(philo, TOOK_FORK) != SUCCESS)
@@ -109,7 +112,7 @@ void	*actions(void *struc)
 	philo = (t_philo *)struc;
 	
 	if (philo->id % 2 == 0)
-		usleep(philo->data->time_to_eat);
+		usleep(philo->data->time_to_eat * 1000 / 2);
 	while(ph_is_alive(philo) == TRUE)
 	{
 		if (thinking(philo) != SUCCESS)
