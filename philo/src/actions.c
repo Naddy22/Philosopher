@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:45:54 by namoisan          #+#    #+#             */
-/*   Updated: 2024/04/02 11:52:51 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:27:49 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	eating(t_philo *philo)
 		}
 		usleep(1000);
 	}
+	philo->eat_count++;
 	pthread_mutex_unlock(&philo->r_fork->fork);
 	pthread_mutex_unlock(&philo->l_fork.fork);
 	pthread_mutex_lock(&philo->data->fork_mutex);
@@ -113,7 +114,8 @@ void	*actions(void *struc)
 	
 	if (philo->id % 2 == 0)
 		usleep(philo->data->time_to_eat * 1000 / 2);
-	while(ph_is_alive(philo) == TRUE)
+	while(ph_is_alive(philo) == TRUE && (philo->eat_count < philo->data->nb_must_eat ||
+		philo->data->nb_must_eat == -1))
 	{
 		if (thinking(philo) != SUCCESS)
 			break;

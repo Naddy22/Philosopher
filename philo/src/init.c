@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:34:45 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/28 14:31:18 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:19:36 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	init_philo(t_data *data)
 	while (i < data->nb_philo)
 	{
 		data->philo[i].id = i + 1;
-		data->philo[i].died = 0;
+		// data->philo[i].died = 0;
 		data->start_time = get_time();
 		data->philo[i].r_fork = NULL;
 		data->philo[i].l_fork.is_lock = 0;

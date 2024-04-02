@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:19:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/29 16:17:57 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:19:29 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	kill_philo(t_philo *philo)
 	pthread_mutex_lock(&philo->data->death_mutex);
 	if (philo->data->dead_flag != 1)
 	{
-		philo->died = 1;
+		// philo->died = 1;
 		philo->data->dead_flag = 1;
 		pthread_mutex_unlock(&philo->data->death_mutex);
 		printf("%lld %d %s\n", get_time(), philo->id, DIED);

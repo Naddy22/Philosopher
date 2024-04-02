@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/29 13:19:26 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/02 14:16:58 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int				id;
-	int				died;
+	// int				died;
 	int				eat_count;
 	long long int	need_eat;
 	pthread_t		thread;
