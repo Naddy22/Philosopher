@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:34:45 by namoisan          #+#    #+#             */
-/*   Updated: 2024/04/02 14:19:36 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:47:47 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static int	create_philo(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (i < data->nb_philo)
 	{
 		data->philo[i].need_eat = get_time() + data->time_to_die;
-		if(pthread_create(&data->philo[i].thread, NULL, &actions, \
-		&data->philo[i]) != SUCCESS)
+		if (pthread_create(&data->philo[i].thread, NULL, &actions,
+				&data->philo[i]) != SUCCESS)
 			return (FAIL);
 		i++;
 	}
@@ -30,13 +30,12 @@ static int	create_philo(t_data *data)
 
 static int	init_philo(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philo)
 	{
 		data->philo[i].id = i + 1;
-		// data->philo[i].died = 0;
 		data->start_time = get_time();
 		data->philo[i].r_fork = NULL;
 		data->philo[i].l_fork.is_lock = 0;

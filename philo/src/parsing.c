@@ -6,23 +6,22 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 10:02:38 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/21 10:28:29 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/05 12:08:31 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-// parsing validation: 
+// parsing validation:
 // 1 verifier si pas plus de 5 arguments (5eme optionnel)
 // (si 4 j'envoie comme si mon 5eme arg etait à -1)
-// 2 verifier si c'est bien que des nombres > 0 sauf nb de repas et pas + 
+// 2 verifier si c'est bien que des nombres > 0 sauf nb de repas et pas +
 // que 200 philo
-
 int	is_valid_number(char **argv)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 1;
 	while (argv[i] != NULL)
 	{
@@ -44,8 +43,9 @@ int	parsing(t_data *data, char **argv, int argc)
 	{
 		if (is_valid_number(argv) == TRUE)
 		{
-			if (ft_atoi(argv[1]) < 1 && ft_atoi(argv[1]) > 200)
-				return (error_msg("Number of philosophers must be between 1 and 200"));
+			if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[1]) > 200)
+				return (error_msg("Number of philosophers must be \
+between 1 and 200"));
 			data->nb_philo = ft_atoi(argv[1]);
 			data->time_to_die = ft_atoi(argv[2]);
 			data->time_to_eat = ft_atoi(argv[3]);

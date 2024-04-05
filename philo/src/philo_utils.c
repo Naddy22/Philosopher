@@ -6,7 +6,7 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:19:51 by namoisan          #+#    #+#             */
-/*   Updated: 2024/04/02 14:19:29 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:50:25 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	kill_philo(t_philo *philo)
 	pthread_mutex_lock(&philo->data->death_mutex);
 	if (philo->data->dead_flag != 1)
 	{
-		// philo->died = 1;
 		philo->data->dead_flag = 1;
 		pthread_mutex_unlock(&philo->data->death_mutex);
 		printf("%lld %d %s\n", get_time(), philo->id, DIED);
@@ -29,7 +28,7 @@ void	kill_philo(t_philo *philo)
 int	ph_is_alive(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->death_mutex);
-	if(philo->data->dead_flag == 1)
+	if (philo->data->dead_flag == 1)
 	{
 		pthread_mutex_unlock(&philo->data->death_mutex);
 		return (FALSE);
@@ -38,7 +37,7 @@ int	ph_is_alive(t_philo *philo)
 	return (TRUE);
 }
 
-int fork_is_lock(t_philo *philo)
+int	fork_is_lock(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->data->fork_mutex);
 	if (&philo->l_fork.fork == &philo->r_fork->fork)

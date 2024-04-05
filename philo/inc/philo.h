@@ -6,19 +6,19 @@
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 09:56:24 by namoisan          #+#    #+#             */
-/*   Updated: 2024/04/02 14:16:58 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:46:37 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <unistd.h>
-# include <string.h>
+# include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <pthread.h>
+# include <string.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -40,7 +40,6 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int				id;
-	// int				died;
 	int				eat_count;
 	long long int	need_eat;
 	pthread_t		thread;
@@ -64,24 +63,24 @@ typedef struct s_data
 	pthread_mutex_t	death_mutex;
 }					t_data;
 
-int	parsing(t_data *data, char **argv, int argc);
+int					parsing(t_data *data, char **argv, int argc);
 
-int		error_msg(char *error);
-void	ft_exit(t_data *data);
+int					error_msg(char *error);
+void				ft_exit(t_data *data);
 
-int	init(t_data *data);
+int					init(t_data *data);
 
-void	*actions(void *struc);
-int		ph_is_alive(t_philo *philo);
+void				*actions(void *struc);
+int					ph_is_alive(t_philo *philo);
 
-//init_utils
-int				ft_atoi(const char *str);
-long long int	get_time(void);
+// init_utils
+int					ft_atoi(const char *str);
+long long int		get_time(void);
 
-//philo_utils
-int		print_action(t_philo *philo, const char *msg);
-void	kill_philo(t_philo *philo);
-int		ph_is_alive(t_philo *philo);
-int		fork_is_lock(t_philo *philo);
+// philo_utils
+int					print_action(t_philo *philo, const char *msg);
+void				kill_philo(t_philo *philo);
+int					ph_is_alive(t_philo *philo);
+int					fork_is_lock(t_philo *philo);
 
 #endif

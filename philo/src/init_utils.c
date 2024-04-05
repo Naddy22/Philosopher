@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoisan <namoisan@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:45:28 by namoisan          #+#    #+#             */
-/*   Updated: 2024/03/27 10:20:26 by namoisan         ###   ########.fr       */
+/*   Updated: 2024/04/05 11:47:32 by namoisan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long long int	get_time(void)
 {
-	static struct timeval start = {-1, -1};
-	struct timeval now;
-	long long int result;
+	static struct timeval	start = {-1, -1};
+	struct timeval			now;
+	long long int			result;
 
 	result = 0;
 	if (start.tv_sec == -1 && start.tv_usec == -1)
